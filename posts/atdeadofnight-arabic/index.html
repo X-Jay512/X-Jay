@@ -113,18 +113,6 @@
       padding: 12px;
     }
     .shot__visual { min-width: 0; }
-    .shot__order {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-    .shot__order b {
-      color: var(--neon-cyan);
-      font-size: 0.95rem;
-    }
     .shot__link {
       display: block;
       border-radius: 8px;
@@ -133,13 +121,6 @@
     }
     .shot__link img { width: 100%; height: auto; }
     .shot__link:hover { border-color: var(--neon-cyan); }
-    .shot__open {
-      display: inline-block;
-      margin-top: 8px;
-      color: var(--text-accent);
-      font-size: 0.78rem;
-    }
-    .shot__open:hover { color: var(--neon-cyan); }
     .install {
       margin-top: 18px;
       padding-top: 16px;
@@ -213,12 +194,6 @@
       return "../other/" + encodeURIComponent("AtDeadOfNight arabic translation") + "/" + encodeURIComponent(folder) + "/" + file;
     }
 
-    function esc(s) {
-      return s.replace(/[&<>]/g, function (c) {
-        return { "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c];
-      });
-    }
-
     const buttons = document.getElementById("styleButtons");
     const panel = document.getElementById("panel");
 
@@ -235,15 +210,13 @@
       buttons.querySelectorAll(".style-btn").forEach(function (btn) {
         btn.classList.toggle("is-active", Number(btn.dataset.style) === style.id);
       });
-      const shots = style.shots.map(function (title, i) {
+      const shots = style.shots.map(function (_, i) {
         const n = i + 1;
         const href = fileUrl(style.folder, n + ".png");
         return '<article class="shot">' +
-          '<div class="shot__order"><b>صورة ' + n + '</b><span>' + esc(title) + '</span></div>' +
           '<a class="shot__link" href="' + href + '" target="_blank" rel="noopener">' +
-            '<img src="' + href + '" alt="أسلوب ' + style.id + ' — صورة ' + n + ' — ' + esc(title) + '">' +
+            '<img src="' + href + '" alt="">' +
           '</a>' +
-          '<a class="shot__open" href="' + href + '" target="_blank" rel="noopener">افتح الصورة ' + n + ' بالرابط المباشر</a>' +
         '</article>';
       }).join("");
 
