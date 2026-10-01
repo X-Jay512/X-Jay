@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>At Dead of Night — الترجمة العربية</title>
-  <meta name="description" content="ترجمة عربية للعبة At Dead of Night. أربعة أساليب للخطوط، وصور مرتبة، ونص الترجمة لكل صورة.">
+  <meta name="description" content="ترجمة عربية للعبة At Dead of Night. أربعة أساليب للخطوط وصور مرتبة.">
   <link rel="stylesheet" href="../../style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -105,9 +105,6 @@
     .dl:hover { opacity: 0.9; }
     .shots { display: flex; flex-direction: column; gap: 16px; }
     .shot {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 14px;
       background: var(--bg-secondary);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
@@ -141,24 +138,6 @@
       font-size: 0.78rem;
     }
     .shot__open:hover { color: var(--neon-cyan); }
-    .shot__copy {
-      background: rgba(255, 255, 255, 0.02);
-      border-radius: 8px;
-      padding: 14px;
-    }
-    .shot__label {
-      font-size: 0.72rem;
-      letter-spacing: 1px;
-      color: var(--neon-pink);
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .shot__text {
-      white-space: pre-line;
-      color: var(--text-primary);
-      font-size: 0.95rem;
-      line-height: 1.75;
-    }
     .install {
       margin-top: 18px;
       padding-top: 16px;
@@ -170,7 +149,7 @@
     .install li { margin: 4px 0; }
     @media (max-width: 800px) {
       .styles { grid-template-columns: 1fr 1fr; }
-      .panel__head, .shot { grid-template-columns: 1fr; display: flex; flex-direction: column; }
+      .panel__head { flex-direction: column; }
     }
     @media (max-width: 480px) {
       .styles { grid-template-columns: 1fr; }
@@ -184,63 +163,11 @@
     <a class="back" href="../../index.html">← الرجوع للموقع</a>
     <p class="post__kicker">OTHER PROJECTS</p>
     <h1 class="post__title">At Dead of Night — الترجمة العربية</h1>
-    <p class="post__lead">أربعة أساليب للخط. اختر رقم الأسلوب، فتظهر صوره بالترتيب من 1 إلى 5، وتحت كل صورة نص الترجمة المكتوب فيها. اضغط الصورة لفتحها بالرابط المباشر.</p>
+    <p class="post__lead">أربعة أساليب للخط. اختر رقم الأسلوب، فتظهر صوره بالترتيب من 1 إلى 5. اضغط الصورة لفتحها بالرابط المباشر.</p>
     <div class="styles" id="styleButtons"></div>
     <section class="panel" id="panel" aria-live="polite"></section>
   </main>
   <script>
-    const MENU = [
-      "العودة إلى فندق سي فيو",
-      "القصة 0% اكتملت",
-      "بدء لعبة جديدة",
-      "حفظ اللعبة الحالية",
-      "إحصائيات اللعبة",
-      "مراجعة المشاهدات",
-      "مشاهدة الدليل والمقدمة",
-      "تعليمات جهاز الاستقبال",
-      "الترجمة والوصف",
-      "فريق العمل",
-      "نصائح اللعب",
-      "جيمي ومرض الـ DID",
-      "مغادرة الفندق",
-      "حفظ وخروج"
-    ].join("\n");
-
-    const TIPS = `نصائح اللعب
-
-العب اللعبة في منتصف الليل، أو على الأقل في غرفة مظلمة، وتأكد من تقليل الأصوات المحيطة قدر الإمكان، أو استخدم سماعات الرأس إذا كنت تلعب بمفردك.
-
-ستحتاج إلى رؤية المناطق المظلمة حيث أن الفندق مظلم وقد يصعب رؤية ظل جيمي. استخدم السطوع (مفاتيح U/I) لزيادة وضوح الظلال إذا لزم الأمر.
-
-يمكن سماع صوت جيمي إذا كان في نفس الطابق. إذا استمعت جيداً، يمكنك سماع خطواته لتحديد مدى قربه. الأرواح تصدر أصواتاً أيضاً. للتركيز، اضغط D لخفض الموسيقى المحيطة.
-
-إذا احتجت إلى مساعدة سمعية، قم بتفعيل خيار «الوصف المعزز» من «الترجمة». إذا لم تكن بحاجة لذلك، يُفضل تركه مغلقاً.
-
-البوصلة تشير للأرواح حتى عبر الجدران، لذا إن لم تجد الروح في الاتجاه المشار إليه، جرب السير في الممرات. تدور البوصلة ببطء عند عدم وجود أرواح، وبسرعة عندما تكون قريباً جداً من إحداها.
-
-تذكر أنه يمكنك النظر عبر ثقوب الأبواب، ويمكنك الركض أسرع في الممرات عبر تحريك المؤشر لأعلى الشاشة.`;
-
-    const DID = `جيمي ومرض الـ DID
-
-قصة جيمي هي تمثيل مسرحي ورمزي لشخص يصارع مسارين أخلاقيين متعارضين، وليست تصويراً حرفياً للاضطراب النفسي الحقيقي المعروف بـ DID (اضطراب الهوية الانفصالية).
-
-مرض DID الحقيقي هو مرض مؤلم وغالباً ما يرتبط بإساءة المعاملة في الطفولة. ولا يرتبط بأي شكل بالسلوكيات الإجرامية. يحتاج المصابون به إلى التعاطف، لكنهم يعانون من سوء الفهم.
-
-لم نكن نهدف للقول بأن جيمي مصاب بهذا المرض، ونحن نعتذر بصدق عن أي ألم قد يسببه هذا الربط للمصابين.
-
-لمزيد من المعلومات:
-https://survivorsnetwork.org.uk/resource/dissociative-identity-disorder-d-i-d`;
-
-    const LOBBY = "مرحباً بكم في\nفندق سي فيو\n\nاحجز هنا";
-    const RADIO = "غرفة 106\n\nهل هناك أحد؟\n\nالسؤال\nفن\nهناك\nطرح سؤال\n\nحاول التواصل مع روح\n(استخدم أيقونة التحدث بالأعلى)\nعرض الكل\n\nعندما تقابل الأرواح يمكنك أن تسألها. اربط ردودها لتكوّن الصلات. عندما تكون وحدك يمكنك مراجعة الردود هنا.\n\nليس لديك أي عناصر لترى حتى الآن";
-    const COMPASS = "غرفة 106\n\nعثرت على بوصلة\n\nتشير إلى الأرواح القريبة";
-    const ROOM_SEARCH = "غرفة 106\n\nابحث هنا\n\nعليك أن تجد بوصلة ومرآة استبصار";
-    const ROOM_DEVICE = "غرفة 106\n\nتشغيل الجهاز\n\nعليك أن تجد بوصلة ومرآة استبصار";
-
-    function menuScreen(panel) {
-      return "القائمة\n\n" + MENU + "\n\n——\n\n" + panel;
-    }
-
     const STYLES = [
       {
         id: 1,
@@ -249,13 +176,7 @@ https://survivorsnetwork.org.uk/resource/dissociative-identity-disorder-d-i-d`;
         desc: "العناوين، والنص، والمفاتيح، والعناصر: كل واحد بخط مختلف. هذا الشكل الأول.",
         folder: "1_FourFonts_Style1",
         zip: "downloads/style-1.zip",
-        shots: [
-          { title: "الاستقبال", text: LOBBY },
-          { title: "القائمة — نصائح اللعب", text: menuScreen(TIPS) },
-          { title: "الغرفة", text: ROOM_SEARCH },
-          { title: "جهاز استقبال الأرواح", text: RADIO },
-          { title: "البوصلة", text: COMPASS }
-        ]
+        shots: ["الاستقبال", "القائمة — نصائح اللعب", "الغرفة", "جهاز استقبال الأرواح", "البوصلة"]
       },
       {
         id: 2,
@@ -264,13 +185,7 @@ https://survivorsnetwork.org.uk/resource/dissociative-identity-disorder-d-i-d`;
         desc: "نفس توزيع الأربع خطوط، مع الشكل الثاني لخط العناوين.",
         folder: "2_FourFonts_Style2",
         zip: "downloads/style-2.zip",
-        shots: [
-          { title: "الاستقبال", text: LOBBY },
-          { title: "القائمة — نصائح اللعب", text: menuScreen(TIPS) },
-          { title: "الغرفة", text: ROOM_DEVICE },
-          { title: "جهاز استقبال الأرواح", text: RADIO },
-          { title: "البوصلة", text: COMPASS }
-        ]
+        shots: ["الاستقبال", "القائمة — نصائح اللعب", "الغرفة", "جهاز استقبال الأرواح", "البوصلة"]
       },
       {
         id: 3,
@@ -279,13 +194,7 @@ https://survivorsnetwork.org.uk/resource/dissociative-identity-disorder-d-i-d`;
         desc: "كل النصوص في اللعبة مكتوبة بخط واحد. هذا الشكل الأول.",
         folder: "3_OneFont_Style1",
         zip: "downloads/style-3.zip",
-        shots: [
-          { title: "القائمة — جيمي ومرض الـ DID", text: menuScreen(DID) },
-          { title: "الاستقبال", text: LOBBY },
-          { title: "الغرفة", text: ROOM_DEVICE },
-          { title: "جهاز استقبال الأرواح", text: RADIO },
-          { title: "البوصلة", text: COMPASS }
-        ]
+        shots: ["القائمة — جيمي ومرض الـ DID", "الاستقبال", "الغرفة", "جهاز استقبال الأرواح", "البوصلة"]
       },
       {
         id: 4,
@@ -294,13 +203,7 @@ https://survivorsnetwork.org.uk/resource/dissociative-identity-disorder-d-i-d`;
         desc: "كل النصوص مكتوبة بخط واحد. هذا الشكل الثاني.",
         folder: "4_OneFont_Style2",
         zip: "downloads/style-4.zip",
-        shots: [
-          { title: "الاستقبال", text: LOBBY },
-          { title: "القائمة — نصائح اللعب", text: menuScreen(TIPS) },
-          { title: "الغرفة", text: ROOM_DEVICE },
-          { title: "جهاز استقبال الأرواح", text: RADIO },
-          { title: "البوصلة", text: COMPASS }
-        ]
+        shots: ["الاستقبال", "القائمة — نصائح اللعب", "الغرفة", "جهاز استقبال الأرواح", "البوصلة"]
       }
     ];
 
@@ -330,21 +233,15 @@ https://survivorsnetwork.org.uk/resource/dissociative-identity-disorder-d-i-d`;
       buttons.querySelectorAll(".style-btn").forEach(function (btn) {
         btn.classList.toggle("is-active", Number(btn.dataset.style) === style.id);
       });
-      const shots = style.shots.map(function (shot, i) {
+      const shots = style.shots.map(function (title, i) {
         const n = i + 1;
         const href = fileUrl(style.folder, n + ".png");
         return '<article class="shot">' +
-          '<div class="shot__visual">' +
-            '<div class="shot__order"><b>صورة ' + n + '</b><span>' + esc(shot.title) + '</span></div>' +
-            '<a class="shot__link" href="' + href + '" target="_blank" rel="noopener">' +
-              '<img src="' + href + '" alt="أسلوب ' + style.id + ' — صورة ' + n + ' — ' + esc(shot.title) + '">' +
-            '</a>' +
-            '<a class="shot__open" href="' + href + '" target="_blank" rel="noopener">افتح الصورة ' + n + ' بالرابط المباشر</a>' +
-          '</div>' +
-          '<div class="shot__copy">' +
-            '<div class="shot__label">ترجمة الصورة</div>' +
-            '<div class="shot__text">' + esc(shot.text) + '</div>' +
-          '</div>' +
+          '<div class="shot__order"><b>صورة ' + n + '</b><span>' + esc(title) + '</span></div>' +
+          '<a class="shot__link" href="' + href + '" target="_blank" rel="noopener">' +
+            '<img src="' + href + '" alt="أسلوب ' + style.id + ' — صورة ' + n + ' — ' + esc(title) + '">' +
+          '</a>' +
+          '<a class="shot__open" href="' + href + '" target="_blank" rel="noopener">افتح الصورة ' + n + ' بالرابط المباشر</a>' +
         '</article>';
       }).join("");
 
