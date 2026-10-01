@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://x-jay512.github.io/X-Jay/sitemap.xml
