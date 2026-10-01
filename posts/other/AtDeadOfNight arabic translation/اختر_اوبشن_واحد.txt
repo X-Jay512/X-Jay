@@ -1,0 +1,16 @@
+انسخ محتويات أوبشن واحد فقط إلى مجلد اللعبة.
+
+مجلد اللعبة = المجلد الذي فيه AtDeadOfNight.exe
+مثال:
+  F:\SteamLibrary\steamapps\common\AtDeadOfNight
+
+الخطوات:
+1) أقفل اللعبة.
+2) افتح الأوبشن اللي عايزه (1 أو 2 أو 3 أو 4).
+3) انسخ مجلد package.nw من جواه.
+4) الصقه داخل مجلد اللعبة (Replace the files).
+
+1_FourFonts_Style1  = 1- اربع خطوط مختلفة شكل 1
+2_FourFonts_Style2  = 2- اربع خطوط مختلفة شكل 2
+3_OneFont_Style1    = 3- خط واحد شكل 1
+4_OneFont_Style2    = 4- خط واحد شكل 2

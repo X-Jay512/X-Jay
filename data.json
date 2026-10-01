@@ -3,5 +3,23 @@
     "discord": "https://discord.gg/BVfhju9EjX",
     "email": "your-email@gmail.com"
   },
-  "products": []
+  "products": [
+    {
+      "id": "atdeadofnight-arabic",
+      "name": "At Dead of Night",
+      "subtitle": "ترجمة عربية · أربعة أساليب",
+      "description": "ترجمة عربية للعبة. أربعة أساليب للخطوط، وكل أسلوب له صوره بالترتيب مع نص الترجمة.",
+      "images": [
+        "posts/other/AtDeadOfNight arabic translation/1_FourFonts_Style1/1.png",
+        "posts/other/AtDeadOfNight arabic translation/2_FourFonts_Style2/2.png",
+        "posts/other/AtDeadOfNight arabic translation/3_OneFont_Style1/1.png",
+        "posts/other/AtDeadOfNight arabic translation/4_OneFont_Style2/1.png"
+      ],
+      "icon": "code",
+      "color": "pink",
+      "link": "posts/atdeadofnight-arabic/index.html",
+      "page": "posts/atdeadofnight-arabic/index.html",
+      "category": "other"
+    }
+  ]
 }

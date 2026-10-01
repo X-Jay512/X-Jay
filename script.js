@@ -9,6 +9,7 @@ const ICONS = {
 };
 
 const DOWNLOAD_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`;
+const OPEN_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><polyline points="7 7 17 7 17 17"/></svg>`;
 
 const isAdmin = localStorage.getItem('xjay_admin') === 'true';
 let siteData = null;
@@ -189,9 +190,10 @@ function renderProduct(p, di) {
   const iconSVG = ICONS[p.icon] || ICONS.box;
   const imgs = p.images || [];
 
+  const openHref = p.page || p.link || '#';
   const downloadBtn = !isAdmin ? `
-    <a href="${p.link || '#'}" ${p.link && p.link.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''} class="product-item__download" onclick="event.stopPropagation();">
-      ${DOWNLOAD_SVG}
+    <a href="${openHref}" ${openHref.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''} class="product-item__download" onclick="event.stopPropagation();">
+      ${p.page ? OPEN_SVG : DOWNLOAD_SVG}
     </a>` : '';
 
   const adminBtns = isAdmin ? `
@@ -283,6 +285,11 @@ function handleClick(e) {
   // Toggle expand
   const item = e.target.closest('.product-item[data-idx]');
   if (item) {
+    const product = siteData.products[parseInt(item.dataset.idx, 10)];
+    if (!isAdmin && product && product.page) {
+      window.location.href = product.page;
+      return;
+    }
     e.preventDefault();
     const isExpanded = item.classList.contains('expanded');
     // Close all

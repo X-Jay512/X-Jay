@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>At Dead of Night — الترجمة العربية</title>
+  <meta name="description" content="ترجمة عربية للعبة At Dead of Night. أربعة أساليب للخطوط، وصور مرتبة، ونص الترجمة لكل صورة.">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Cairo', 'Inter', sans-serif; }
+    .post { width: 92%; max-width: 1000px; margin: 28px auto 64px; }
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 22px;
+    }
+    .back:hover { color: var(--neon-cyan); }
+    .post__kicker {
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      color: var(--neon-pink);
+      font-weight: 700;
+    }
+    .post__title {
+      font-size: clamp(1.7rem, 4vw, 2.4rem);
+      line-height: 1.25;
+      margin: 6px 0 10px;
+    }
+    .post__lead {
+      color: var(--text-secondary);
+      max-width: 68ch;
+      margin-bottom: 28px;
+    }
+    .styles {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+    .style-btn {
+      text-align: right;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 14px 14px 16px;
+      color: var(--text-primary);
+      cursor: pointer;
+      font-family: inherit;
+      transition: var(--transition-fast);
+    }
+    .style-btn:hover { border-color: var(--border-hover); background: var(--bg-card-hover); }
+    .style-btn.is-active {
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 0 1px var(--neon-cyan), 0 0 24px var(--accent-glow-cyan);
+    }
+    .style-btn__num {
+      display: inline-grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: rgba(0, 212, 255, 0.12);
+      color: var(--neon-cyan);
+      font-weight: 800;
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+    }
+    .style-btn.is-active .style-btn__num {
+      background: var(--accent-gradient);
+      color: #fff;
+    }
+    .style-btn__name { display: block; font-weight: 700; font-size: 0.95rem; }
+    .style-btn__shape { display: block; color: var(--text-muted); font-size: 0.8rem; margin-top: 2px; }
+    .panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+    .panel__head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 18px;
+    }
+    .panel__title { font-size: 1.25rem; margin-bottom: 6px; }
+    .panel__desc { color: var(--text-secondary); font-size: 0.95rem; }
+    .dl {
+      flex-shrink: 0;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      background: var(--accent-gradient);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+    .dl:hover { opacity: 0.9; }
+    .shots { display: flex; flex-direction: column; gap: 16px; }
+    .shot {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 14px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+    }
+    .shot__visual { min-width: 0; }
+    .shot__order {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    .shot__order b {
+      color: var(--neon-cyan);
+      font-size: 0.95rem;
+    }
+    .shot__link {
+      display: block;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+    .shot__link img { width: 100%; height: auto; }
+    .shot__link:hover { border-color: var(--neon-cyan); }
+    .shot__open {
+      display: inline-block;
+      margin-top: 8px;
+      color: var(--text-accent);
+      font-size: 0.78rem;
+    }
+    .shot__open:hover { color: var(--neon-cyan); }
+    .shot__copy {
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 8px;
+      padding: 14px;
+    }
+    .shot__label {
+      font-size: 0.72rem;
+      letter-spacing: 1px;
+      color: var(--neon-pink);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .shot__text {
+      white-space: pre-line;
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+    .install {
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    .install ol { margin: 8px 18px 0 0; }
+    .install li { margin: 4px 0; }
+    @media (max-width: 800px) {
+      .styles { grid-template-columns: 1fr 1fr; }
+      .panel__head, .shot { grid-template-columns: 1fr; display: flex; flex-direction: column; }
+    }
+    @media (max-width: 480px) {
+      .styles { grid-template-columns: 1fr; }
+      .post { width: 94%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <main class="post">
+    <a class="back" href="../../index.html">← الرجوع للموقع</a>
+    <p class="post__kicker">OTHER PROJECTS</p>
+    <h1 class="post__title">At Dead of Night — الترجمة العربية</h1>
+    <p class="post__lead">أربعة أساليب للخط. اختر رقم الأسلوب، فتظهر صوره بالترتيب من 1 إلى 5، وتحت كل صورة نص الترجمة المكتوب فيها. اضغط الصورة لفتحها بالرابط المباشر.</p>
+    <div class="styles" id="styleButtons"></div>
+    <section class="panel" id="panel" aria-live="polite"></section>
+  </main>
+  <script>
+    const MENU = [
+      "العودة إلى فندق سي فيو",
+      "القصة 0% اكتملت",
+      "بدء لعبة جديدة",
+      "حفظ اللعبة الحالية",
+      "إحصائيات اللعبة",
+      "مراجعة المشاهدات",
+      "مشاهدة الدليل والمقدمة",
+      "تعليمات جهاز الاستقبال",
+      "الترجمة والوصف",
+      "فريق العمل",
+      "نصائح اللعب",
+      "جيمي ومرض الـ DID",
+      "مغادرة الفندق",
+      "حفظ وخروج"
+    ].join("\n");
+
+    const TIPS = `نصائح اللعب
+
+العب اللعبة في منتصف الليل، أو على الأقل في غرفة مظلمة، وتأكد من تقليل الأصوات المحيطة قدر الإمكان، أو استخدم سماعات الرأس إذا كنت تلعب بمفردك.
+
+ستحتاج إلى رؤية المناطق المظلمة حيث أن الفندق مظلم وقد يصعب رؤية ظل جيمي. استخدم السطوع (مفاتيح U/I) لزيادة وضوح الظلال إذا لزم الأمر.
+
+يمكن سماع صوت جيمي إذا كان في نفس الطابق. إذا استمعت جيداً، يمكنك سماع خطواته لتحديد مدى قربه. الأرواح تصدر أصواتاً أيضاً. للتركيز، اضغط D لخفض الموسيقى المحيطة.
+
+إذا احتجت إلى مساعدة سمعية، قم بتفعيل خيار «الوصف المعزز» من «الترجمة». إذا لم تكن بحاجة لذلك، يُفضل تركه مغلقاً.
+
+البوصلة تشير للأرواح حتى عبر الجدران، لذا إن لم تجد الروح في الاتجاه المشار إليه، جرب السير في الممرات. تدور البوصلة ببطء عند عدم وجود أرواح، وبسرعة عندما تكون قريباً جداً من إحداها.
+
+تذكر أنه يمكنك النظر عبر ثقوب الأبواب، ويمكنك الركض أسرع في الممرات عبر تحريك المؤشر لأعلى الشاشة.`;
+
+    const DID = `جيمي ومرض الـ DID
+
+قصة جيمي هي تمثيل مسرحي ورمزي لشخص يصارع مسارين أخلاقيين متعارضين، وليست تصويراً حرفياً للاضطراب النفسي الحقيقي المعروف بـ DID (اضطراب الهوية الانفصالية).
+
+مرض DID الحقيقي هو مرض مؤلم وغالباً ما يرتبط بإساءة المعاملة في الطفولة. ولا يرتبط بأي شكل بالسلوكيات الإجرامية. يحتاج المصابون به إلى التعاطف، لكنهم يعانون من سوء الفهم.
+
+لم نكن نهدف للقول بأن جيمي مصاب بهذا المرض، ونحن نعتذر بصدق عن أي ألم قد يسببه هذا الربط للمصابين.
+
+لمزيد من المعلومات:
+https://survivorsnetwork.org.uk/resource/dissociative-identity-disorder-d-i-d`;
+
+    const LOBBY = "مرحباً بكم في\nفندق سي فيو\n\nاحجز هنا";
+    const RADIO = "غرفة 106\n\nهل هناك أحد؟\n\nالسؤال\nفن\nهناك\nطرح سؤال\n\nحاول التواصل مع روح\n(استخدم أيقونة التحدث بالأعلى)\nعرض الكل\n\nعندما تقابل الأرواح يمكنك أن تسألها. اربط ردودها لتكوّن الصلات. عندما تكون وحدك يمكنك مراجعة الردود هنا.\n\nليس لديك أي عناصر لترى حتى الآن";
+    const COMPASS = "غرفة 106\n\nعثرت على بوصلة\n\nتشير إلى الأرواح القريبة";
+    const ROOM_SEARCH = "غرفة 106\n\nابحث هنا\n\nعليك أن تجد بوصلة ومرآة استبصار";
+    const ROOM_DEVICE = "غرفة 106\n\nتشغيل الجهاز\n\nعليك أن تجد بوصلة ومرآة استبصار";
+
+    function menuScreen(panel) {
+      return "القائمة\n\n" + MENU + "\n\n——\n\n" + panel;
+    }
+
+    const STYLES = [
+      {
+        id: 1,
+        name: "أربع خطوط مختلفة",
+        shape: "شكل 1",
+        desc: "العناوين، والنص، والمفاتيح، والعناصر: كل واحد بخط مختلف. هذا الشكل الأول.",
+        folder: "1_FourFonts_Style1",
+        zip: "downloads/style-1.zip",
+        shots: [
+          { title: "الاستقبال", text: LOBBY },
+          { title: "القائمة — نصائح اللعب", text: menuScreen(TIPS) },
+          { title: "الغرفة", text: ROOM_SEARCH },
+          { title: "جهاز استقبال الأرواح", text: RADIO },
+          { title: "البوصلة", text: COMPASS }
+        ]
+      },
+      {
+        id: 2,
+        name: "أربع خطوط مختلفة",
+        shape: "شكل 2",
+        desc: "نفس توزيع الأربع خطوط، مع الشكل الثاني لخط العناوين.",
+        folder: "2_FourFonts_Style2",
+        zip: "downloads/style-2.zip",
+        shots: [
+          { title: "الاستقبال", text: LOBBY },
+          { title: "القائمة — نصائح اللعب", text: menuScreen(TIPS) },
+          { title: "الغرفة", text: ROOM_DEVICE },
+          { title: "جهاز استقبال الأرواح", text: RADIO },
+          { title: "البوصلة", text: COMPASS }
+        ]
+      },
+      {
+        id: 3,
+        name: "خط واحد",
+        shape: "شكل 1",
+        desc: "كل النصوص في اللعبة مكتوبة بخط واحد. هذا الشكل الأول.",
+        folder: "3_OneFont_Style1",
+        zip: "downloads/style-3.zip",
+        shots: [
+          { title: "القائمة — جيمي ومرض الـ DID", text: menuScreen(DID) },
+          { title: "الاستقبال", text: LOBBY },
+          { title: "الغرفة", text: ROOM_DEVICE },
+          { title: "جهاز استقبال الأرواح", text: RADIO },
+          { title: "البوصلة", text: COMPASS }
+        ]
+      },
+      {
+        id: 4,
+        name: "خط واحد",
+        shape: "شكل 2",
+        desc: "كل النصوص مكتوبة بخط واحد. هذا الشكل الثاني.",
+        folder: "4_OneFont_Style2",
+        zip: "downloads/style-4.zip",
+        shots: [
+          { title: "الاستقبال", text: LOBBY },
+          { title: "القائمة — نصائح اللعب", text: menuScreen(TIPS) },
+          { title: "الغرفة", text: ROOM_DEVICE },
+          { title: "جهاز استقبال الأرواح", text: RADIO },
+          { title: "البوصلة", text: COMPASS }
+        ]
+      }
+    ];
+
+    function fileUrl(folder, file) {
+      return "../other/" + encodeURIComponent("AtDeadOfNight arabic translation") + "/" + encodeURIComponent(folder) + "/" + file;
+    }
+
+    function esc(s) {
+      return s.replace(/[&<>]/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c];
+      });
+    }
+
+    const buttons = document.getElementById("styleButtons");
+    const panel = document.getElementById("panel");
+
+    buttons.innerHTML = STYLES.map(function (s) {
+      return '<button class="style-btn" type="button" data-style="' + s.id + '">' +
+        '<span class="style-btn__num">' + s.id + '</span>' +
+        '<span class="style-btn__name">' + s.name + '</span>' +
+        '<span class="style-btn__shape">' + s.shape + '</span>' +
+        '</button>';
+    }).join("");
+
+    function showStyle(id, push) {
+      const style = STYLES.filter(function (s) { return s.id === id; })[0] || STYLES[0];
+      buttons.querySelectorAll(".style-btn").forEach(function (btn) {
+        btn.classList.toggle("is-active", Number(btn.dataset.style) === style.id);
+      });
+      const shots = style.shots.map(function (shot, i) {
+        const n = i + 1;
+        const href = fileUrl(style.folder, n + ".png");
+        return '<article class="shot">' +
+          '<div class="shot__visual">' +
+            '<div class="shot__order"><b>صورة ' + n + '</b><span>' + esc(shot.title) + '</span></div>' +
+            '<a class="shot__link" href="' + href + '" target="_blank" rel="noopener">' +
+              '<img src="' + href + '" alt="أسلوب ' + style.id + ' — صورة ' + n + ' — ' + esc(shot.title) + '">' +
+            '</a>' +
+            '<a class="shot__open" href="' + href + '" target="_blank" rel="noopener">افتح الصورة ' + n + ' بالرابط المباشر</a>' +
+          '</div>' +
+          '<div class="shot__copy">' +
+            '<div class="shot__label">ترجمة الصورة</div>' +
+            '<div class="shot__text">' + esc(shot.text) + '</div>' +
+          '</div>' +
+        '</article>';
+      }).join("");
+
+      panel.innerHTML =
+        '<div class="panel__head">' +
+          '<div>' +
+            '<h2 class="panel__title">' + style.id + ' — ' + style.name + ' · ' + style.shape + '</h2>' +
+            '<p class="panel__desc">' + style.desc + '</p>' +
+          '</div>' +
+          '<a class="dl" href="' + style.zip + '">تحميل أسلوب ' + style.id + '</a>' +
+        '</div>' +
+        '<div class="shots">' + shots + '</div>' +
+        '<div class="install">' +
+          '<strong>التركيب — أسلوب واحد فقط</strong>' +
+          '<ol>' +
+            '<li>أقفل اللعبة.</li>' +
+            '<li>حمّل ملف الأسلوب ' + style.id + ' وفك الضغط.</li>' +
+            '<li>انسخ مجلد package.nw إلى مجلد اللعبة، بجانب AtDeadOfNight.exe.</li>' +
+            '<li>لما ويندوز يسأل، اختار Replace.</li>' +
+          '</ol>' +
+        '</div>';
+
+      if (push) history.replaceState(null, "", "#" + style.id);
+    }
+
+    buttons.addEventListener("click", function (e) {
+      const btn = e.target.closest("[data-style]");
+      if (!btn) return;
+      showStyle(Number(btn.dataset.style), true);
+    });
+
+    window.addEventListener("hashchange", function () {
+      const n = Number(location.hash.replace("#", ""));
+      if (n >= 1 && n <= 4) showStyle(n, false);
+    });
+
+    const start = Number(location.hash.replace("#", ""));
+    showStyle(start >= 1 && start <= 4 ? start : 1, true);
+  </script>
+</body>
+</html>

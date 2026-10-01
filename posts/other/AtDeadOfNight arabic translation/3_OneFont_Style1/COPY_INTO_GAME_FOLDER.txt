@@ -1,0 +1,8 @@
+﻿Copy the package.nw folder from here INTO the game folder
+(the folder that contains AtDeadOfNight.exe).
+
+When Windows asks to Replace files, choose Replace.
+
+Font: 3- خط واحد شكل 1
+
+Close the game first.
