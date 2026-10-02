@@ -331,7 +331,9 @@ img { max-width: 100%; display: block; }
 }
 
 .product-item__name {
-  display: block;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--text-primary);
@@ -340,8 +342,6 @@ img { max-width: 100%; display: block; }
 
 .product-item__sub {
   display: block;
-  direction: rtl;
-  text-align: right;
   font-size: 0.75rem;
   color: var(--text-muted);
   margin-top: 2px;

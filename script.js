@@ -232,13 +232,13 @@ function renderProduct(p, di) {
   const descHTML = p.description ? `<p class="product-detail__desc">${p.description}</p>` : '';
 
   return `
-    <div class="product-wrapper" data-wrapidx="${di}" data-name="${p.name.toLowerCase()}" data-tags="${(p.subtitle + ' ' + (p.description||'')).toLowerCase()}">
+    <div class="product-wrapper" data-wrapidx="${di}" data-name="${p.name.toLowerCase()}" data-tags="${((p.badge || '') + ' ' + p.subtitle + ' ' + (p.description||'')).toLowerCase()}">
       ${adminBtns}
       <div class="product-item" data-idx="${di}">
         <div class="product-item__icon product-item__icon--${p.color}">${iconSVG}</div>
         <div class="product-item__info">
-          <span class="product-item__name">${p.name}</span>
-          <span class="product-item__sub" dir="rtl">${p.subtitle}</span>
+          <span class="product-item__name"><span dir="ltr">${p.name}</span>${p.badge ? '<span class="product-item__badge">' + p.badge + '</span>' : ''}</span>
+          <span class="product-item__sub">${p.subtitle}</span>
         </div>
         ${downloadBtn}
       </div>
