@@ -30,6 +30,11 @@
       font-weight: 700;
     }
     .post__title {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: flex-start;
+      gap: 0.4em;
       font-size: clamp(1.7rem, 4vw, 2.4rem);
       line-height: 1.25;
       margin: 6px 0 10px;
@@ -145,7 +150,7 @@
   <main class="post">
     <a class="back" href="../../index.html">← الرجوع للموقع</a>
     <p class="post__kicker">OTHER PROJECTS</p>
-    <h1 class="post__title">At Dead of Night — تعريب X-Jay</h1>
+    <h1 class="post__title"><span>تعريب</span><span dir="ltr">At Dead of Night — X-Jay</span></h1>
     <p class="post__lead">ترجمة لعبة At Dead of Night من Xjay. Arabic translation بأربعة أساليب للخط. اختر رقم الأسلوب.</p>
     <div class="styles" id="styleButtons"></div>
     <section class="panel" id="panel" aria-live="polite"></section>

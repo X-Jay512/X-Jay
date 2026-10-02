@@ -138,12 +138,19 @@ async function checkAdminHash() {
 window.addEventListener('hashchange', checkAdminHash);
 
 async function loadSite() {
-  const saved = localStorage.getItem('xjay_data');
-  if (saved) { try { siteData = JSON.parse(saved); } catch(e) { siteData = null; } }
-  if (!siteData) {
-    try { const r = await fetch('data.json'); siteData = await r.json(); }
-    catch(e) { console.error('Could not load data.json', e); return; }
+  let remote = null;
+  try {
+    const r = await fetch('data.json', { cache: 'no-store' });
+    remote = await r.json();
+  } catch (e) { console.error('Could not load data.json', e); }
+  if (isAdmin) {
+    const saved = localStorage.getItem('xjay_data');
+    if (saved) { try { siteData = JSON.parse(saved); } catch (e) { siteData = remote; } }
+    else siteData = remote;
+  } else {
+    siteData = remote;
   }
+  if (!siteData) return;
   siteData.products.forEach(p => { if (!p.description) p.description = ''; if (!p.images) p.images = []; });
 
   const discordLink = document.getElementById('discord-link');
@@ -231,7 +238,7 @@ function renderProduct(p, di) {
         <div class="product-item__icon product-item__icon--${p.color}">${iconSVG}</div>
         <div class="product-item__info">
           <span class="product-item__name">${p.name}</span>
-          <span class="product-item__sub">${p.subtitle}</span>
+          <span class="product-item__sub" dir="rtl">${p.subtitle}</span>
         </div>
         ${downloadBtn}
       </div>
